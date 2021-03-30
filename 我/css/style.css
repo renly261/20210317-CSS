@@ -1,0 +1,365 @@
+/* 繼承整個瀏覽器的高度 */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 建立寬度一致 水平置中的容器 */
+.container {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  /* 縮寫 */
+  margin: auto;
+}
+
+/* 滿版 */
+.h-100 {
+  height: 100%;
+}
+
+/* header 固定選單--------------------------------------------------------- */
+#header {
+  width: 75%;
+  height: 60px;
+
+  /* position: fixed 也可以當作定位點 */
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 100;
+}
+
+#header .menu {
+  font-size: 0;
+
+  /* 設定 position: absolute 寬度會變緊縮式，要設定width才有完整寬度 */
+  width: 100%;
+  height: 60px;
+
+  /* inline-block 置中 */
+  text-align: center;
+  background: url(../street_fighter/images/nav-bg-full.jpg) repeat-x center center;
+
+  position: absolute;
+  top: 25px;
+
+  /* 同一層後面的postion:會蓋到前面的postion 若logo結構在上面，menu會蓋到logo */
+  /* 也可以將logo與menu結構對調，logo在下 menu在上，後方會蓋掉前方 */
+  /* z-index:可調動上下順序 可正負數字大在上面 要有position: 設定 z-index:才有效果*/
+  z-index: -1;
+}
+
+#header .menu li {
+  display: inline-block;
+  padding: 0.5rem 0rem;
+  font-size: 1rem;
+}
+/* .前面有空白代表後代選擇器是選到包在 menu 裡 li 裡的a  .前面沒有空格選的是 menu 裡有c lass=a 的*/
+#header .menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  display: block;
+  transition: 0.5s;
+}
+
+#header .menu li a:hover {
+  background: rgba(255, 60, 0, 0.3);
+}
+
+/* 第三個 li 右側後往後推移15%的空間 */
+#header .menu li:nth-child(3) {
+  margin-right: 15%;
+}
+
+/* logo */
+#header .logo {
+  width: 15%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 圖片要符合父元素 .logo的尺寸設定 100% */
+#header .logo img {
+  width: 100%;
+}
+
+/* 設定一個空間給左邊 */
+#header .menu::before {
+  content: '';
+  width: 12px;
+  height: 60px;
+
+  /* /cover 會符合容器範圍 設定太大也不會超出去 */
+  background: url(../street_fighter/images/nav-bg-left.png) no-repeat left top/cover;
+
+  /* 已經進入定位層 要給一個 position: */
+  position: absolute;
+  left: -10px;
+}
+
+/* 設定一個空間給右邊 */
+#header .menu::after {
+  content: '';
+  width: 12px;
+  height: 60px;
+  background: url(../street_fighter/images/nav-bg-right.png) no-repeat left top/cover;
+
+  position: absolute;
+  right: -10px;
+}
+
+/* section 01回首頁 -------------------------------------------------------*/
+#section01 {
+  background: url(../street_fighter/images/section01-bg.jpg) no-repeat center center/cover;
+
+  /* 定位點 */
+  position: relative;
+}
+
+#section01 .main-news {
+  /* position: absolute 會變緊縮，要設定寬度 */
+  width: 100%;
+  text-align: center;
+
+  /* 會以瀏覽器左邊為基準 需要在父層設定位點 */
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section01 .main-news h1 {
+  font-size: 2.5rem;
+  font-style: italic;
+  color: yellow;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 1), 0 0 15px rgba(0, 0, 0, 1);
+}
+
+/* section02 遊戲介紹-------------------------------------------- */
+#section02 {
+  background: url(../street_fighter/images/section02-bg.jpg) no-repeat center center/cover;
+}
+
+#section02 .container {
+  position: relative;
+  height: 100%;
+}
+
+#section02 .row {
+  width: 100%;
+  /* 幽靈空白 */
+  font-size: 0;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section02 .col {
+  font-size: 1rem;
+
+  box-sizing: border-box;
+  width: 50%;
+  padding: 5rem 1rem;
+  color: white;
+  display: inline-block;
+}
+
+#section02 .col h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#section02 .col p {
+  line-height: 1.5;
+  text-indent: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+#section02 .col iframe {
+  width: 100%;
+  height: 300px;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* section03 角色列表------------------------------- */
+#section03 {
+  background: linear-gradient(45deg, #222 40%, #aaa 40%);
+}
+
+#section03 .col:nth-child(1) {
+  height: 65%;
+}
+
+#section03 .col:nth-child(2) {
+  height: 35%;
+}
+
+/* 人物大圖 */
+#section03 .role_info .role {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 5rem 1.5rem 0;
+  float: left;
+}
+
+#section03 .role_info .role img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 人物資料 */
+#section03 .role_info .info {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 8rem 1rem 5rem;
+  float: right;
+}
+
+#section03 .role_info .info h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#section03 .role_info .info p {
+  padding: 0.5rem 0;
+  line-height: 1.2;
+}
+
+#section03 .role_info input {
+  display: none;
+}
+
+/* 下方角色清單 */
+#section03 .role_list {
+  font-size: 0;
+  text-align: center;
+}
+
+#section03 .role_list label {
+  width: 7%;
+  display: inline-block;
+  margin: 0 0 5px 0;
+  /* 滑鼠移過去變手指 */
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#section03 .role_list img {
+  width: 100%;
+}
+
+#section03 .role_list label:hover {
+  filter: drop-shadow(0 0 5px red);
+  filter: drop-shadow(0 0 10px blue);
+}
+
+/* ~ 同層全體選擇器 第4個之後的label套用(不包含4) */
+#section03 .role_list label:nth-child(4) ~ label {
+  filter: brightness(0.4);
+  cursor: auto;
+}
+
+/* 隱藏上方人物資料 */
+#section03 .role_info > div {
+  display: none;
+}
+
+#section03 .role_info input:checked + div {
+  display: block;
+}
+
+/* footer */
+#footer {
+  background: black;
+  color: white;
+  padding: 2rem 0;
+}
+
+#footer .row {
+  overflow: auto;
+}
+
+#footer .row .col {
+  width: 25%;
+  float: left;
+}
+
+#footer .card {
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+#footer h1 {
+  font-size: 1.2rem;
+}
+
+#footer li {
+  line-height: 1.5;
+  padding-left: 1.5rem;
+}
+
+#footer .card h3 {
+  margin: 1rem 0;
+}
+
+#footer .card > i {
+  width: 30px;
+  font-size: 1.3rem;
+}
+
+#footer .copyright {
+  text-align: center;
+  padding: 2rem 0 0;
+}
+
+/* backtop 回到最上面 */
+
+.backtop {
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 0.8rem;
+  position: fixed;
+  right: 3%;
+  bottom: 3%;
+}
+
+.backtop .square {
+  background: black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.backtop:hover .square {
+  transform: rotate(45deg) scale(2);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.backtop a {
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  text-decoration: none;
+  position: absolute;
+  z-index: 100;
+}
